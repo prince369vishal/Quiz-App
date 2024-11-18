@@ -11,18 +11,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <div class="app">
-      <h1>Simple Quiz</h1>
-      
+      <div class="headerContainer">
+        <h1>Quiz App </h1>
+        <h3>
+          Score : <span id="marks">0</span> / <span id="questionLength">5</span>
+        </h3>
+      </div>
+
       <div class="quiz">
         <h2 id="question">Question written here</h2>
-        
-        <div id="answer">
-        </div>
+
+        <div id="answer"></div>
 
         <button id="next-btn">Next</button>
-
       </div>
     </div>
     <script src="script.js"></script>

@@ -1,21 +1,32 @@
 const questions = [
+
+
   {
-    question: "Which is the largest animal in the world?",
+    question: "What is the full form of BMW?",
     answer: [
-      { text: "Blue Whale", correct: true },
-      { text: "Lion", correct: false },
-      { text: "Peacock", correct: false },
-      { text: "Giraffe", correct: false },
+      { text: "Be My Wife", correct: false },
+      { text: "Bisleri Mineral Water", correct: false },
+      { text: "Bayerische Motoren Werke", correct: true },
+      { text: "Tony Kakkar", correct: false },
     ],
   },
 
   {
-    question: "Which is the largest bird in the world?",
+    question: "Who wrote the play 'Romeo and Juliet'?",
     answer: [
-      { text: "peacock", correct: true },
-      { text: "cock", correct: false },
-      { text: "neha", correct: false },
-      { text: "Elephant", correct: false },
+      { text: "Charles Dickens", correct: false },
+      { text: "William Shakespeare", correct: true },
+      { text: "Mark Will", correct: false },
+      { text: "Prince Vishal", correct: false },
+    ],
+  },
+  {
+    question: "Who is the CEO of OPEN AI?",
+    answer: [
+      { text: "Sam Altman", correct: true },
+      { text: "Robert James Chaudhary", correct: false },
+      { text: "Neha Kakkar", correct: false },
+      { text: "Elon Musk", correct: false },
     ],
   },
 
@@ -23,8 +34,8 @@ const questions = [
     question: "Which is the Smartest Human in the world?",
     answer: [
       { text: "You", correct: false },
-      { text: "ME", correct: false },
-      { text: "We", correct: false },
+      { text: "Giraffe", correct: false },
+      { text: "Elon Musk", correct: false },
       { text: "Vishal", correct: true },
     ],
   },
@@ -33,19 +44,24 @@ const questions = [
 const questionElement = document.getElementById("question");
 const answerElement = document.getElementById("answer");
 const nextbtn = document.getElementById("next-btn");
+const marks = document.getElementById("marks");
+const questionLength = document.getElementById("questionLength");
 
 let currentQindex = 0;
 let score = 0;
 
-function startQuiz() {
-  currentQindex = 0;
+function setupInitailValues() {
   score = 0;
+  currentQindex = 0;
+  marks.innerHTML= score
+  questionLength.innerHTML = questions.length;
   nextbtn.innerHTML = "Next";
   showQuestion();
 }
 
 function showQuestion() {
   resetState();
+  
   let currentQuestion = questions[currentQindex];
   let questionNo = currentQindex + 1;
   questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
@@ -63,6 +79,7 @@ function showQuestion() {
 }
 
 function resetState() {
+  
   nextbtn.style.display = "none";
   while (answerElement.firstChild) {
     answerElement.removeChild(answerElement.firstChild);
@@ -75,6 +92,7 @@ function selectAnswer(e) {
   if (isCorrect) {
     selectedBtn.classList.add("correct");
     score++;
+    marks.innerHTML = score;
   } else {
     selectedBtn.classList.add("incorrect");
   }
@@ -89,6 +107,7 @@ function selectAnswer(e) {
 }
 function showScore() {
   resetState();
+
   questionElement.innerHTML = `You scored ${score} out of ${questions.length}`;
   nextbtn.innerHTML = "Play Again";
   nextbtn.style.display = "block";
@@ -105,7 +124,7 @@ nextbtn.addEventListener("click", () => {
   if (currentQindex < questions.length) {
     handleNextButton();
   } else {
-    startQuiz();
+    setupInitailValues();
   }
 });
-startQuiz();
+setupInitailValues();
