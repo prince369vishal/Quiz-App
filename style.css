@@ -27,16 +27,18 @@
   border-bottom: 1px solid #333;
   padding-bottom: 30px;
 }
-.quiz h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #001e4d;
-}
-.app h1 {
+
+ h1 {
   font-size: 25px;
   color: #001e4d;
   font-weight: 600;
 }
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #001e4d;
+}
+
 
 #answer .btn {
   background: #fff;
@@ -51,14 +53,15 @@
   cursor: pointer;
   transition: all 0.3s;
 }
+#answer .btn:disabled {
+  cursor: not-allowed;
+}
 
 #answer .btn:hover:not([disabled]) {
   background: #222;
   color: #fff;
 }
-#answer .btn:disabled {
-  cursor: no-drop;
-}
+
 #next-btn {
   background: #001e4d;
   color: #fff;
